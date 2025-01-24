@@ -1,0 +1,35 @@
+[
+{
+    "name": "HTML",
+    "image": "assets/languages/html.svg"
+},
+
+{
+    "name": "CSS",
+    "image": "assets/languages/css.svg"
+},
+
+{
+    "name": "JavaScript",
+    "image": "assets/languages/javascript.svg"
+},
+
+{
+    "name": "Python",
+    "image": "assets/languages/python.svg"
+},
+
+{
+    "name": "Django",
+    "image": "assets/languages/django.svg"
+},
+
+{
+    "name": "React",
+    "image": "assets/languages/react.svg"
+},
+{
+    "name": "GIT",
+    "image": "assets/languages/git.svg"
+}
+]
