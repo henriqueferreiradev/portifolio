@@ -1,3 +1,7 @@
+
+
+
+
 //dá loading nas skills a partir do json
 async function loadSkills() {
     const skillsContainer = document.getElementById('skills-container')

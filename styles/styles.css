@@ -89,8 +89,8 @@ body {
     align-items: center;
     height: 100vh;
     padding: 0 8em;
-   
-   
+
+
 
 }
 
@@ -409,14 +409,16 @@ body {
     align-items: center;
     height: 100vh;
     padding: 4em 8em;
-     
+
 }
+
 .card_area {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
+
 }
+
 .card_proj {
     display: inline-block;
     position: relative;
@@ -427,7 +429,7 @@ body {
     margin: 2em;
     box-shadow: var(--box-shadow-branco);
     transition: scale ease 1s;
-   
+
 }
 
 .card_proj-quad {
@@ -448,7 +450,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
+
 
 }
 
@@ -493,7 +495,7 @@ body {
 
 .card_proj:hover {
     scale: 1.10;
-    
+
 }
 
 .card_proj:hover .button-proj {
@@ -509,37 +511,83 @@ body {
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    
+
 }
+
 .modal {
     display: flex;
-    
+    flex-direction: row-reverse;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 1000px;
-    background-color: var(--preto-background);    
+    background-color: var(--preto-background);
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 5;
     padding: 2em;
 }
+.modal_container_dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+}
+.progressBar {
+ 
+    width: 230px;  
+    height: 8px;  
+ 
+}
+
+.modal_player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .player_controls {
     display: flex;
     align-items: center;
-}
-.player_button {
-    background-color: var(--preto-background);
-    border: none;
-    border-radius: 25px; 
+    gap: 0.5em;
+    border: 1px solid var(--verde);
+    padding: .5em 0;
 
 }
-.player_button img {
-    width: 20px;
-    height: 20px;
+ 
+
+.player_button {
+    background-color: transparent;
+    border: none;
 }
+.player_button:hover {
+    scale: 1.1;
+}
+.player_button img {
+    width: 25px;
+    height: 25px;
+}
+
+.modal_links_link {
+    position: relative;
+    padding: 0.5em;
+    background: var(--gradiente-verde-roxo);
+    border: 1px solid var(--verde);
+    border-radius: 20px;
+    color: var(--branco);
+    font-family: var(--fonte-principal);
+    font-size: 14px;
+    font-weight: 700;
+    width: 140px;
+    overflow: hidden;
+    transition: border-color 1s ease;
+    box-shadow: var(--box-shadow_b);
+
+}
+
 ::selection {
     background-color: var(--verde);
     background: var(--verde);
@@ -550,20 +598,3 @@ body {
     background-color: var(--verde);
     color: black;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
