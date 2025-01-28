@@ -529,17 +529,29 @@ body {
     z-index: 5;
     padding: 2em;
 }
+
 .modal_container_dir {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5em;
 }
+.modal_title {
+
+    color: var(--verde);
+    font-size: 20px;
+    text-decoration: underline 2px;
+    margin-bottom: 1em;
+}
+.modal_description_title, .modal_description_languages {
+    color: var(--cinza-fonte);
+    font-size: 18px;
+    margin-bottom: 1em;
+}
+ 
 .progressBar {
- 
-    width: 230px;  
-    height: 8px;  
- 
+    width: 230px;
+    height: 8px;
 }
 
 .modal_player {
@@ -554,18 +566,22 @@ body {
     align-items: center;
     gap: 0.5em;
     border: 1px solid var(--verde);
+    border-radius: 25px;
     padding: .5em 0;
+    margin: .5em;
 
 }
- 
+
 
 .player_button {
     background-color: transparent;
     border: none;
 }
+
 .player_button:hover {
     scale: 1.1;
 }
+
 .player_button img {
     width: 25px;
     height: 25px;
