@@ -1,9 +1,43 @@
 
 
 
-function loadProjetos() {
-    const projectsContainer = document.
+async function loadProjetos() {
+    const projectsContainer = document.getElementById('modal_skills-container')
+    try {
+        const resposta = await fetch('./projects.json');
+        const projects = await resposta.json();
+        console.log(projects);
+        
+        projects.forEach(projects => {
+            const listItem = document.createElement("li");
+            listItem.classList.add('modal_card');
+
+            const cardDiv = document.createElement('div');
+            cardDiv.classList.add('modal_card2');
+
+            const skillName = document.createElement('p')
+            skillName.classList.add('modal_card_title')
+            skillName.textContent = projects.name
+
+            const skillImg = document.createElement('img')
+            skillImg.classList.add('modal_card_img')
+            skillImg.src = projects.image;
+            skillImg.alt = ` logo do ${skillName}`
+
+
+            cardDiv.appendChild(skillName);
+            cardDiv.appendChild(skillImg);
+            listItem.appendChild(cardDiv);
+            projectsContainer.appendChild(listItem);
+
+        });
+
+    }
+    catch (error) {
+        console.error("Erro ao carregar as skills:", error)
+    }
 }
+
 //dá loading nas skills a partir do json
 async function loadSkills() {
     const skillsContainer = document.getElementById('skills-container')
@@ -129,9 +163,9 @@ particlesJS("particles-js", {
     retina_detect: true,
 });
 
- 
 
 
+loadProjetos();
 loadSkills();
 
 

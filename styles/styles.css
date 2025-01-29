@@ -349,6 +349,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2em;
+    z-index: 100;
 }
 
 .card {
@@ -532,23 +533,33 @@ body {
 
 .modal_container_dir {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    gap: 5em;
-}
-.modal_title {
 
-    color: var(--verde);
+}
+
+.modal_title {
+    font-family: var(--fonte-logo);
+    font-weight: 700;
+    color: var(--branco);
+    background: var(--gradiente-verde-roxo);
+    padding: .8em;
+    border-radius: 15px;
     font-size: 20px;
     text-decoration: underline 2px;
     margin-bottom: 1em;
 }
-.modal_description_title, .modal_description_languages {
+
+.modal_description_title,
+.modal_description_languages {
+    font-family: var(--fonte-logo);
     color: var(--cinza-fonte);
     font-size: 18px;
     margin-bottom: 1em;
+    margin-top: 1em;
 }
- 
+
 .progressBar {
     width: 230px;
     height: 8px;
@@ -566,7 +577,7 @@ body {
     align-items: center;
     gap: 0.5em;
     border: 1px solid var(--verde);
-    border-radius: 25px;
+    border-radius: 15px;
     padding: .5em 0;
     margin: .5em;
 
@@ -613,4 +624,69 @@ body {
 ::-moz-selection {
     background-color: var(--verde);
     color: black;
+}
+
+.modal_skills_card {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    z-index: 100;
+}
+
+.modal_lang {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.modal_card {
+    width: 80px;
+    height: 80px;
+    background-image: var(--gradiente-ro-ve-ro);
+    transition: all .5s;
+    border-radius: 20px;
+
+}
+
+.modal_card2 {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: var(--preto-background);
+    transition: all .5s;
+    transform: scale(0.98);
+}
+
+.modal_card2:hover {
+    transform: scale(0.95);
+    border-radius: 20px;
+
+}
+
+.modal_card2:hover .card_title {
+    color: var(--verde);
+    font-weight: 700;
+}
+
+.modal_card:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.modal_card_title {
+    font-family: var(--fonte-logo);
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.modal_card_img {
+    width: 30px;
+    height: 30px;
 }
