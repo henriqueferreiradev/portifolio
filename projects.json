@@ -1,8 +1,9 @@
 [
   {
     "name": "Weather 360",
-    "description": "testes de descricao",
-    "languages": [
+"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...",
+
+    "lang": [
       {
         "name": "CSS",
         "image": "assets/languages/css.svg"
@@ -15,7 +16,7 @@
     "links": [
       {
         "repositorio": "https://www.github.com.br",
-        "visualizar": "https://www.facebook.com",
+        "teste": "https://www.facebook.com",
         "linkedin": "https://www.linkedin.com"
       }
     ]

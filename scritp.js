@@ -1,34 +1,58 @@
+const openProjectButton = document.querySelector(".button-proj")
+const modal = document.querySelector('.modal')
 
 
 
 async function loadProjetos() {
     const projectsContainer = document.getElementById('modal_skills-container')
+    const nameProject = document.querySelector(".modal_title")
+    const descriptionProject = document.querySelector(".modal_description")
+    const repoButton = document.querySelector(".repo")
+    const testButton = document.querySelector(".teste")
+    const linkedinButton = document.querySelector(".linkedin")
+ 
+    abrirModal()
+
+
+
     try {
         const resposta = await fetch('./projects.json');
         const projects = await resposta.json();
         console.log(projects);
-        
-        projects.forEach(projects => {
-            const listItem = document.createElement("li");
-            listItem.classList.add('modal_card');
 
-            const cardDiv = document.createElement('div');
-            cardDiv.classList.add('modal_card2');
+        projects.forEach(project => {
+            project.lang.forEach(lang => {
+                const listItem = document.createElement("li");
+                listItem.classList.add('modal_card');
 
-            const skillName = document.createElement('p')
-            skillName.classList.add('modal_card_title')
-            skillName.textContent = projects.name
+                const cardDiv = document.createElement('div');
+                cardDiv.classList.add('modal_card2');
 
-            const skillImg = document.createElement('img')
-            skillImg.classList.add('modal_card_img')
-            skillImg.src = projects.image;
-            skillImg.alt = ` logo do ${skillName}`
+                const skillName = document.createElement('p')
+                skillName.classList.add('modal_card_title')
+                skillName.textContent = lang.name
+
+                const skillImg = document.createElement('img')
+                skillImg.classList.add('modal_card_img')
+                skillImg.src = lang.image;
+                skillImg.alt = ` logo do ${skillName}`
+
+                nameProject.textContent = project.name
+                descriptionProject.textContent = project.description
 
 
-            cardDiv.appendChild(skillName);
-            cardDiv.appendChild(skillImg);
-            listItem.appendChild(cardDiv);
-            projectsContainer.appendChild(listItem);
+                cardDiv.appendChild(skillName);
+                cardDiv.appendChild(skillImg);
+                listItem.appendChild(cardDiv);
+                projectsContainer.appendChild(listItem);
+
+            }),
+                project.links.forEach(link => {
+                    repoButton.href = link.repositorio
+                    testButton.href = link.teste
+                    linkedinButton.href = link.linkedin
+                })
+
 
         });
 
@@ -37,7 +61,13 @@ async function loadProjetos() {
         console.error("Erro ao carregar as skills:", error)
     }
 }
+function abrirModal() {
+    modal.classList.add('ativo')
+}
 
+function fecharModal() {
+    modal.classList.remove('ativo')
+}
 //dá loading nas skills a partir do json
 async function loadSkills() {
     const skillsContainer = document.getElementById('skills-container')
@@ -164,8 +194,8 @@ particlesJS("particles-js", {
 });
 
 
-
-loadProjetos();
+openProjectButton.addEventListener('click', loadProjetos())
+ 
 loadSkills();
 
 
