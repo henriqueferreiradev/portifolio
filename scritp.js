@@ -1,17 +1,15 @@
 const openProjectButton = document.querySelector(".button-proj")
+const closeProjectButton = document.querySelector(".fechar_modal")
 const modal = document.querySelector('.modal')
 
 
 
+
 async function loadProjetos() {
-    const projectsContainer = document.getElementById('modal_skills-container')
-    const nameProject = document.querySelector(".modal_title")
-    const descriptionProject = document.querySelector(".modal_description")
-    const repoButton = document.querySelector(".repo")
-    const testButton = document.querySelector(".teste")
-    const linkedinButton = document.querySelector(".linkedin")
- 
-    abrirModal()
+
+    const projectsCard = document.getElementById('card_area')
+    projectsCard.innerHTML = ""
+
 
 
 
@@ -21,37 +19,48 @@ async function loadProjetos() {
         console.log(projects);
 
         projects.forEach(project => {
-            project.lang.forEach(lang => {
-                const listItem = document.createElement("li");
-                listItem.classList.add('modal_card');
 
-                const cardDiv = document.createElement('div');
-                cardDiv.classList.add('modal_card2');
+            const cardProj = document.createElement('div')
+            cardProj.classList.add('card_proj')
 
-                const skillName = document.createElement('p')
-                skillName.classList.add('modal_card_title')
-                skillName.textContent = lang.name
-
-                const skillImg = document.createElement('img')
-                skillImg.classList.add('modal_card_img')
-                skillImg.src = lang.image;
-                skillImg.alt = ` logo do ${skillName}`
-
-                nameProject.textContent = project.name
-                descriptionProject.textContent = project.description
+            const titleDiv = document.createElement("div")
+            titleDiv.classList.add('card_proj-title')
+            const nameItem = document.createElement('p')
+            nameItem.classList.add("title_proj")
+            nameItem.textContent = project.name
 
 
-                cardDiv.appendChild(skillName);
-                cardDiv.appendChild(skillImg);
-                listItem.appendChild(cardDiv);
-                projectsContainer.appendChild(listItem);
+            const projectImg = document.createElement('img')
+            projectImg.classList.add('card_proj-img')
+            projectImg.src = project.background
+            projectImg.alt = ` logo do ${project.background}`
 
-            }),
-                project.links.forEach(link => {
-                    repoButton.href = link.repositorio
-                    testButton.href = link.teste
-                    linkedinButton.href = link.linkedin
-                })
+            const cardProjQuad = document.createElement('div')
+            cardProjQuad.classList.add('card_proj-quad')
+
+            const cardDateDiv = document.createElement('div')
+            cardDateDiv.classList.add('card_proj-date')
+
+            const projectData = document.createElement('p')
+            projectData.textContent = project.data
+
+            const buttonDiv = document.createElement('div')
+            buttonDiv.classList.add('card_proj-button')
+            const viewButton = document.createElement('button')
+            viewButton.classList.add("button", "button-proj", "download-button")
+            viewButton.textContent = "Ver mais..."
+            viewButton.addEventListener('click', () => abrirModalProject(project))
+            buttonDiv.appendChild(viewButton)
+            cardProjQuad.appendChild(cardDateDiv);
+            cardProjQuad.appendChild(buttonDiv);
+
+            cardProj.appendChild(projectImg);
+            cardProj.appendChild(titleDiv);
+            cardProj.appendChild(cardDateDiv);
+
+
+            projectsCard.appendChild(cardProj);
+
 
 
         });
@@ -61,12 +70,49 @@ async function loadProjetos() {
         console.error("Erro ao carregar as skills:", error)
     }
 }
-function abrirModal() {
-    modal.classList.add('ativo')
-}
+function abrirModalProject(project) {
+    const projectsContainer = document.getElementById('modal_skills-container')
+    const nameProject = document.querySelector(".modal_title")
+    const descriptionProject = document.querySelector(".modal_description")
+    const repoButton = document.querySelector(".repo")
+    const testButton = document.querySelector(".teste")
+    const linkedinButton = document.querySelector(".linkedin")
 
-function fecharModal() {
-    modal.classList.remove('ativo')
+    projectsContainer.innerHTML = ""
+
+    project.lang.forEach(lang => {
+        const listItem = document.createElement("li");
+        listItem.classList.add('modal_card');
+
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('modal_card2');
+
+        const skillName = document.createElement('p')
+        skillName.classList.add('modal_card_title')
+        skillName.textContent = lang.name
+
+        const skillImg = document.createElement('img')
+        skillImg.classList.add('modal_card_img')
+        skillImg.src = lang.image;
+        skillImg.alt = ` logo do ${skillName}`
+
+        nameProject.textContent = project.name
+        descriptionProject.textContent = project.description
+
+
+        cardDiv.appendChild(skillName);
+        cardDiv.appendChild(skillImg);
+        listItem.appendChild(cardDiv);
+        projectsContainer.appendChild(listItem);
+
+    }),
+        project.links.forEach(link => {
+            repoButton.href = link.repositorio
+            testButton.href = link.teste
+            linkedinButton.href = link.linkedin
+        })
+
+    abrirModal()
 }
 //dá loading nas skills a partir do json
 async function loadSkills() {
@@ -193,9 +239,15 @@ particlesJS("particles-js", {
     retina_detect: true,
 });
 
+function abrirModal() {
+    modal.classList.add('ativo')
+}
 
-openProjectButton.addEventListener('click', loadProjetos())
- 
+function fecharModal() {
+    modal.classList.remove('ativo')
+}
+openProjectButton.addEventListener('click', loadProjetos)
+closeProjectButton.addEventListener('click', fecharModal)
 loadSkills();
 
 

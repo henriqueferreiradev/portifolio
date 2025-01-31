@@ -538,6 +538,9 @@ body {
 }
 .overlay {
     position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
     background: rgba(255, 255, 255, 0.5);
     z-index: 999;
 }
@@ -594,7 +597,11 @@ body {
     margin: .5em;
 
 }
-
+.fechar_modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 
 .player_button {
     background-color: transparent;
