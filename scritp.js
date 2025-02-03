@@ -1,17 +1,13 @@
 const openProjectButton = document.querySelector(".button-proj")
 const closeProjectButton = document.querySelector(".fechar_modal")
 const modal = document.querySelector('.modal')
+document.addEventListener('DOMContentLoaded', loadProjetos)
+document.addEventListener('DOMContentLoaded', loadSkills)
 
-
-
-
+//dá loading nos projetos a partir do json
 async function loadProjetos() {
-
-    const projectsCard = document.getElementById('card_area')
-    projectsCard.innerHTML = ""
-
-
-
+    const projectsCard = document.getElementById('card_area');
+    projectsCard.innerHTML = "";
 
     try {
         const resposta = await fetch('./projects.json');
@@ -20,56 +16,63 @@ async function loadProjetos() {
 
         projects.forEach(project => {
 
-            const cardProj = document.createElement('div')
-            cardProj.classList.add('card_proj')
+            const cardProj = document.createElement('div');
+            cardProj.classList.add('card_proj');
 
-            const titleDiv = document.createElement("div")
-            titleDiv.classList.add('card_proj-title')
-            const nameItem = document.createElement('p')
-            nameItem.classList.add("title_proj")
-            nameItem.textContent = project.name
+            const titleDiv = document.createElement("div");
+            titleDiv.classList.add('card_proj-title');
 
+            const nameItem = document.createElement('p');
+            nameItem.classList.add("title_proj");
+            nameItem.textContent = project.name;
 
-            const projectImg = document.createElement('img')
-            projectImg.classList.add('card_proj-img')
-            projectImg.src = project.background
-            projectImg.alt = ` logo do ${project.background}`
+            titleDiv.appendChild(nameItem);
 
-            const cardProjQuad = document.createElement('div')
-            cardProjQuad.classList.add('card_proj-quad')
+            const projectImg = document.createElement('img');
+            projectImg.classList.add('card_proj-img');
+            projectImg.src = project.background;
+            projectImg.alt = `Logo do ${project.name}`;
 
-            const cardDateDiv = document.createElement('div')
-            cardDateDiv.classList.add('card_proj-date')
+            const cardProjQuad = document.createElement('div');
+            cardProjQuad.classList.add('card_proj-quad');
 
-            const projectData = document.createElement('p')
-            projectData.textContent = project.data
+            const cardDateDiv = document.createElement('div');
+            cardDateDiv.classList.add('card_proj-date');
 
-            const buttonDiv = document.createElement('div')
-            buttonDiv.classList.add('card_proj-button')
-            const viewButton = document.createElement('button')
-            viewButton.classList.add("button", "button-proj", "download-button")
-            viewButton.textContent = "Ver mais..."
-            viewButton.addEventListener('click', () => abrirModalProject(project))
-            buttonDiv.appendChild(viewButton)
+            const projectData = document.createElement('p');
+            projectData.textContent = project.data;
+
+            cardDateDiv.appendChild(projectData);
+
+            const buttonDiv = document.createElement('div');
+            buttonDiv.classList.add('card_proj-button');
+
+            const viewButton = document.createElement('button');
+            viewButton.classList.add("button", "button-proj", "download-button");
+            viewButton.textContent = "Ver mais...";
+            viewButton.addEventListener('click', () => abrirModalProject(project));
+
+            buttonDiv.appendChild(viewButton);
             cardProjQuad.appendChild(cardDateDiv);
             cardProjQuad.appendChild(buttonDiv);
 
             cardProj.appendChild(projectImg);
             cardProj.appendChild(titleDiv);
-            cardProj.appendChild(cardDateDiv);
-
+            cardProj.appendChild(cardProjQuad);
 
             projectsCard.appendChild(cardProj);
-
-
-
         });
+
+
+
+
 
     }
     catch (error) {
         console.error("Erro ao carregar as skills:", error)
     }
 }
+//abre o  modal
 function abrirModalProject(project) {
     const projectsContainer = document.getElementById('modal_skills-container')
     const nameProject = document.querySelector(".modal_title")
@@ -242,12 +245,16 @@ particlesJS("particles-js", {
 function abrirModal() {
     modal.classList.add('ativo')
 }
-
+function playerVideo() {
+    
+}
 function fecharModal() {
     modal.classList.remove('ativo')
 }
+
 openProjectButton.addEventListener('click', loadProjetos)
 closeProjectButton.addEventListener('click', fecharModal)
-loadSkills();
+
+
 
 

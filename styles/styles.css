@@ -34,7 +34,9 @@ body {
     background-color: var(--preto-background);
     font-family: var(--fonte-principal);
     color: var(--cinza-hover);
-
+}
+button {
+    cursor: pointer;
 }
 
 .header {
@@ -523,7 +525,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    width: 1000px;
+    width: 70vw;
+    height: 70vh;
+
     background-color: var(--preto-background);
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -574,7 +578,7 @@ body {
     margin-bottom: 1em;
     margin-top: 1em;
 }
-
+ 
 .progressBar {
     width: 230px;
     height: 8px;
@@ -599,10 +603,17 @@ body {
 }
 .fechar_modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 13px;
+    right: 13px;
+    color: var(--verde);
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    transition: scale ease 1s;
 }
-
+.fechar_modal:hover {
+    scale: 1.1;
+}
 .player_button {
     background-color: transparent;
     border: none;
