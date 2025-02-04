@@ -80,6 +80,7 @@ function abrirModalProject(project) {
     const repoButton = document.querySelector(".repo")
     const testButton = document.querySelector(".teste")
     const linkedinButton = document.querySelector(".linkedin")
+    const video = document.querySelector(".video")
 
     projectsContainer.innerHTML = ""
 
@@ -101,6 +102,7 @@ function abrirModalProject(project) {
 
         nameProject.textContent = project.name
         descriptionProject.textContent = project.description
+
 
 
         cardDiv.appendChild(skillName);
@@ -246,7 +248,7 @@ function abrirModal() {
     modal.classList.add('ativo')
 }
 function playerVideo() {
-    
+
 }
 function fecharModal() {
     modal.classList.remove('ativo')

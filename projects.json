@@ -4,6 +4,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...",
     "data": "21/09/2025",
     "background": "./assets/projects/background_night.png",
+    "video": "./assets/video/videoplayback.mp4",
     "lang": [
       {
         "name": "CSS",
@@ -131,7 +132,7 @@
     ],
     "links": [
       {
-        "repositorio": "https://www.github.com.br",
+        "repositorio": "https://www.github.com",
         "teste": "https://www.facebook.com",
         "linkedin": "https://www.linkedin.com"
       }
