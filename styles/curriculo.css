@@ -1,0 +1,49 @@
+@import url(./styles.css);
+
+@page {
+    size: A4;
+    margin: 20mm;
+}
+
+.curriculo {
+    width: 794px;
+    height: 1123px;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+
+}
+
+.curriculo_perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--branco);
+    height: 1123px;
+    width: 40vw;
+
+}
+
+
+.curriculo_infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--branco);
+    height: 1123px;
+    width: 60vw;
+    position: relative
+
+}
+
+.perfil_img {
+   
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+     
+    
+}
