@@ -4,6 +4,8 @@ const modal = document.querySelector('.modal')
 document.addEventListener('DOMContentLoaded', loadProjetos)
 document.addEventListener('DOMContentLoaded', loadSkills)
 
+
+
 //dá loading nos projetos a partir do json
 async function loadProjetos() {
     const projectsCard = document.getElementById('card_area');
@@ -80,9 +82,10 @@ function abrirModalProject(project) {
     const repoButton = document.querySelector(".repo")
     const testButton = document.querySelector(".teste")
     const linkedinButton = document.querySelector(".linkedin")
-    const video = document.querySelector(".video")
+    const modalGallery = document.querySelector(".modal_gallery")
 
     projectsContainer.innerHTML = ""
+    modalGallery.innerHTML = ""
 
     project.lang.forEach(lang => {
         const listItem = document.createElement("li");
@@ -115,9 +118,20 @@ function abrirModalProject(project) {
             repoButton.href = link.repositorio
             testButton.href = link.teste
             linkedinButton.href = link.linkedin
-        })
+        }),
 
+        Object.values(project.gallery[0]).forEach(image => {
+
+            const galleryImage = document.createElement("img")
+            galleryImage.classList.add('gallery_img')
+            galleryImage.src = image
+            modalGallery.appendChild(galleryImage)
+
+
+
+        })
     abrirModal()
+    closeProjectButton.addEventListener('click', fecharModal)
 }
 //dá loading nas skills a partir do json
 async function loadSkills() {
@@ -254,8 +268,7 @@ function fecharModal() {
     modal.classList.remove('ativo')
 }
 
-openProjectButton.addEventListener('click', loadProjetos)
-closeProjectButton.addEventListener('click', fecharModal)
+
 
 
 
