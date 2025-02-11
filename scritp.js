@@ -1,5 +1,6 @@
 const openProjectButton = document.querySelector(".button-proj")
 const closeProjectButton = document.querySelector(".fechar_modal")
+const filtra = document.querySelector('.button_filter')
 const modal = document.querySelector('.modal')
 document.addEventListener('DOMContentLoaded', loadProjetos)
 document.addEventListener('DOMContentLoaded', loadSkills)
@@ -7,8 +8,9 @@ document.addEventListener('DOMContentLoaded', loadSkills)
 
 
 //dá loading nos projetos a partir do json
-async function loadProjetos() {
+async function loadProjetos(categoria = null) {
     const projectsCard = document.getElementById('card_area');
+     
     projectsCard.innerHTML = "";
 
     try {
@@ -16,7 +18,14 @@ async function loadProjetos() {
         const projects = await resposta.json();
         console.log(projects);
 
-        projects.forEach(project => {
+
+        gerarBotoesCategoria(projects);
+
+        const projetosFiltrados = categoria
+            ? projects.filter(proj => proj.categoria === categoria)
+            : projects
+        
+            projetosFiltrados.forEach(project => {
 
             const cardProj = document.createElement('div');
             cardProj.classList.add('card_proj');
@@ -65,15 +74,12 @@ async function loadProjetos() {
             projectsCard.appendChild(cardProj);
         });
 
-
-
-
-
     }
     catch (error) {
         console.error("Erro ao carregar as skills:", error)
     }
 }
+
 //abre o  modal
 function abrirModalProject(project) {
     const projectsContainer = document.getElementById('modal_skills-container')
@@ -133,6 +139,41 @@ function abrirModalProject(project) {
     abrirModal()
     closeProjectButton.addEventListener('click', fecharModal)
 }
+ 
+
+
+
+function gerarBotoesCategoria(projects) {
+    const filtroContainer = document.getElementById("filtro_area");
+    filtroContainer.innerHTML = "";
+
+    categorias = [...new Set(projects.map(project => project.categoria))]
+    const botaoTodos = document.createElement('button')
+    botaoTodos.textContent= "Todos";
+    botaoTodos.classList.add('button','download_button', 'active')
+    botaoTodos.addEventListener('click', () => {
+        document.querySelectorAll(".download_button").forEach(btn => btn.classList.remove("active"));
+        botaoTodos.classList.add("active");
+         
+        loadProjetos(null);
+    });
+    filtroContainer.appendChild(botaoTodos)
+
+    categorias.forEach(categoria => {
+        const botao = document.createElement('button')
+        botao.textContent = categoria
+        botao.classList.add('button','download_button')
+        botao.addEventListener('click', () => {
+        document.querySelectorAll(".download_button").forEach(btn => btn.classList.remove("active"));
+        botao.classList.add("active");
+      
+        loadProjetos(categoria);
+    });
+        filtroContainer.appendChild(botao)
+    })
+
+}
+
 //dá loading nas skills a partir do json
 async function loadSkills() {
     const skillsContainer = document.getElementById('skills-container')
@@ -268,7 +309,7 @@ function fecharModal() {
     modal.classList.remove('ativo')
 }
 function abrirCurriculo() {
-    
+
 }
 
 
