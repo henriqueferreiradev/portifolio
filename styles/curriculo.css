@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid var(--branco);
+    border: 1px solid var(--verde);
     height: 1123px;
     width: 40vw;
 
@@ -35,7 +35,10 @@
     border: 1px solid var(--branco);
     height: 1123px;
     width: 60vw;
-    position: relative
+    position: relative;
+     
+    
+    
 }
 
 .perfil_img {
@@ -52,14 +55,16 @@
     font-size: 20px;
     text-transform: uppercase;
     color: var(--cinza-ativo);
-    margin: 1em 0 1em 0;
+    margin: 1em 0 1em 1em ;
     color: var(--verde);
+    
 }
 
 .lista_item {
     display: flex;
     align-items: center;
     gap: .5em;
+    margin-left: 1em;
 
 }
 
@@ -68,12 +73,23 @@
 .lista_soft {
     font-size: 18px;
     margin-bottom: .5em;
+    
 }
 .lista_soft {
-    list-style-type: square;
+    margin-left: 1em;
 }
 .lista_item-img {
     width: 30px;
 }
-
- 
+.lista_hard {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+     
+}
+.hard_img { 
+    width: 50px;
+    height: 50px;
+}

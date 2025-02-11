@@ -267,7 +267,9 @@ function playerVideo() {
 function fecharModal() {
     modal.classList.remove('ativo')
 }
-
+function abrirCurriculo() {
+    
+}
 
 
 
