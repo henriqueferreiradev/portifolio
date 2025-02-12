@@ -420,6 +420,9 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    
+
 
 }
 
@@ -459,6 +462,8 @@ button {
 }
 
 .card_proj-title {
+    display: flex;
+ 
     font-family: var(--fonte-logo);
     position: absolute;
     color: var(--branco);
@@ -518,6 +523,28 @@ button {
 
 }
 
+.card_categoria {
+    font-size: 12px;
+    font-family: var(--fonte-logo);
+    position: absolute;
+    color: var(--branco);
+    font-weight: 700;
+    top: 96%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: var(--gradiente-verde-roxo);
+    padding: 5px 10px;
+    border-radius: 15px 15px 0px 0px;
+    text-transform: uppercase;
+    transition: top ease 0.5s;
+   
+}
+.card_proj:hover .card_categoria {
+    top: 76%;
+    
+
+}
+ 
 .modal {
     display: none;
     flex-direction: row-reverse;

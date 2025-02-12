@@ -37,12 +37,20 @@ async function loadProjetos(categoria = null) {
             nameItem.classList.add("title_proj");
             nameItem.textContent = project.name;
 
+            const categoria = document.createElement('p');
+            categoria.classList.add('card_categoria');
+            categoria.textContent = project.categoria;
+            
+            
             titleDiv.appendChild(nameItem);
+            
 
             const projectImg = document.createElement('img');
             projectImg.classList.add('card_proj-img');
             projectImg.src = project.background;
             projectImg.alt = `Logo do ${project.name}`;
+
+            
 
             const cardProjQuad = document.createElement('div');
             cardProjQuad.classList.add('card_proj-quad');
@@ -70,6 +78,7 @@ async function loadProjetos(categoria = null) {
             cardProj.appendChild(projectImg);
             cardProj.appendChild(titleDiv);
             cardProj.appendChild(cardProjQuad);
+            cardProj.appendChild(categoria)
 
             projectsCard.appendChild(cardProj);
         });
