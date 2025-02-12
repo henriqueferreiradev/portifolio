@@ -2,30 +2,32 @@ const openProjectButton = document.querySelector(".button-proj")
 const closeProjectButton = document.querySelector(".fechar_modal")
 const filtra = document.querySelector('.button_filter')
 const modal = document.querySelector('.modal')
-document.addEventListener('DOMContentLoaded', loadProjetos)
-document.addEventListener('DOMContentLoaded', loadSkills)
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjetos(null);
+    loadSkills();
+});
 
 
 
 //dá loading nos projetos a partir do json
-async function loadProjetos(categoria = null) {
+async function loadProjetos(categoria) {
     const projectsCard = document.getElementById('card_area');
-     
+
     projectsCard.innerHTML = "";
 
     try {
         const resposta = await fetch('./projects.json');
         const projects = await resposta.json();
-        console.log(projects);
+  
 
 
-        gerarBotoesCategoria(projects);
+        gerarBotoesCategoria(projects, categoria);
 
         const projetosFiltrados = categoria
             ? projects.filter(proj => proj.categoria === categoria)
             : projects
-        
-            projetosFiltrados.forEach(project => {
+
+        projetosFiltrados.forEach(project => {
 
             const cardProj = document.createElement('div');
             cardProj.classList.add('card_proj');
@@ -40,17 +42,17 @@ async function loadProjetos(categoria = null) {
             const categoria = document.createElement('p');
             categoria.classList.add('card_categoria');
             categoria.textContent = project.categoria;
-            
-            
+
+
             titleDiv.appendChild(nameItem);
-            
+
 
             const projectImg = document.createElement('img');
             projectImg.classList.add('card_proj-img');
             projectImg.src = project.background;
             projectImg.alt = `Logo do ${project.name}`;
 
-            
+
 
             const cardProjQuad = document.createElement('div');
             cardProjQuad.classList.add('card_proj-quad');
@@ -148,40 +150,62 @@ function abrirModalProject(project) {
     abrirModal()
     closeProjectButton.addEventListener('click', fecharModal)
 }
- 
 
 
 
-function gerarBotoesCategoria(projects) {
+
+function gerarBotoesCategoria(projects, categoriaSelecionada) {
     const filtroContainer = document.getElementById("filtro_area");
-    filtroContainer.innerHTML = "";
+    if (!filtroContainer) {
+        console.error("Elemento filtro_area não encontrado.");
+        return;
+    }
 
-    categorias = [...new Set(projects.map(project => project.categoria))]
-    const botaoTodos = document.createElement('button')
-    botaoTodos.textContent= "Todos";
-    botaoTodos.classList.add('button','download_button', 'active')
+    // Se os botões já existem, apenas atualiza o estado de "active"
+    const botoesExistentes = filtroContainer.querySelectorAll("button");
+    if (botoesExistentes.length > 0) {
+        botoesExistentes.forEach(botao => {
+            if (botao.textContent === categoriaSelecionada || (categoriaSelecionada === null && botao.textContent === "Todos")) {
+                botao.classList.add("active");
+            } else {
+                botao.classList.remove("active");
+            }
+        });
+        return; // Evita recriar os botões desnecessariamente
+    }
+
+    filtroContainer.innerHTML = ""; // Só limpa se for a primeira vez
+
+    const categorias = [...new Set(projects.map(project => project.categoria))];
+
+    // Cria o botão "Todos"
+    const botaoTodos = document.createElement('button');
+    botaoTodos.textContent = "Todos";
+    botaoTodos.classList.add('button');
+    if (categoriaSelecionada === null) botaoTodos.classList.add("active");
+
     botaoTodos.addEventListener('click', () => {
-        document.querySelectorAll(".download_button").forEach(btn => btn.classList.remove("active"));
-        botaoTodos.classList.add("active");
-         
         loadProjetos(null);
     });
-    filtroContainer.appendChild(botaoTodos)
 
+    filtroContainer.appendChild(botaoTodos);
+
+    // Cria os botões de categorias específicas
     categorias.forEach(categoria => {
-        const botao = document.createElement('button')
-        botao.textContent = categoria
-        botao.classList.add('button','download_button')
-        botao.addEventListener('click', () => {
-        document.querySelectorAll(".download_button").forEach(btn => btn.classList.remove("active"));
-        botao.classList.add("active");
-      
-        loadProjetos(categoria);
-    });
-        filtroContainer.appendChild(botao)
-    })
+        const botao = document.createElement('button');
+        botao.textContent = categoria;
+        botao.classList.add('button');
 
+        if (categoriaSelecionada === categoria) botao.classList.add("active");
+
+        botao.addEventListener('click', () => {
+            loadProjetos(categoria);
+        });
+
+        filtroContainer.appendChild(botao);
+    });
 }
+
 
 //dá loading nas skills a partir do json
 async function loadSkills() {
@@ -189,7 +213,7 @@ async function loadSkills() {
     try {
         const resposta = await fetch('./language.json');
         const skills = await resposta.json();
-        console.log(skills);
+    
         skills.forEach(skill => {
             const listItem = document.createElement("li");
             listItem.classList.add('card');
