@@ -345,7 +345,16 @@ function abrirCurriculo() {
 
 }
 
-
-
+function baixarPDF() {
+    const elemento = document.querySelector('.curriculo'); // Define o que será convertido
+    const options = {
+        margin: [0,5,0,5],
+        filename: 'Curriculo_Henrique_Monteiro.pdf',
+        image: {type:'jpeg', quality: 1},
+        html2canvas: {scale: 3, useCORS: true},
+        jsPDF: { unit:'mm', format:'a4', orientation: 'portrait'}
+    }
+    html2pdf()
+}
 
 

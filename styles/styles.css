@@ -258,8 +258,7 @@ button {
 .container_about {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
+    height:70vh;
     align-items: center;
     padding: 4em 8em;
 }
@@ -267,6 +266,7 @@ button {
 .about_infos {
     display: flex;
     align-items: center;
+    margin: 10em 0;
 
 
 }
@@ -293,8 +293,9 @@ button {
 .container_skills {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 100vh;
+    justify-content: center;
+    gap: 5em;
+    height: 50vh;
     align-items: center;
     padding: 4em 8em;
 }
@@ -397,8 +398,8 @@ button {
 }
 
 .card_proj-quad {
-    border-top: 3px solid;
-    border-image: var(--gradiente-verde-roxo);
+    border-top: 5px solid;
+    border-color: var(--verde);
     border-image-slice: 1;
     position: absolute;
     top: 99%;
