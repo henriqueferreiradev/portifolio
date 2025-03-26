@@ -93,16 +93,23 @@ async function loadProjetos(categoria) {
 
 //abre o  modal
 function abrirModalProject(project) {
-    const projectsContainer = document.getElementById('modal_skills-container')
+    const projectsContainer = document.getElementById('modal')
     const nameProject = document.querySelector(".modal_title")
     const descriptionProject = document.querySelector(".modal_description")
     const repoButton = document.querySelector(".repo")
     const testButton = document.querySelector(".teste")
     const linkedinButton = document.querySelector(".linkedin")
     const modalGallery = document.querySelector(".modal_gallery")
+    const skillsList = document.querySelector(".modal_skills"); 
 
-    projectsContainer.innerHTML = ""
-    modalGallery.innerHTML = ""
+    if (!nameProject || !descriptionProject || !repoButton || !testButton || !linkedinButton || !modalGallery || !skillsList) {
+        console.error("Algum elemento do modal não foi encontrado!");
+        return;
+    }
+
+    nameProject.textContent = project.name;
+    descriptionProject.textContent = project.description;
+    skillsList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
 
     project.lang.forEach(lang => {
         const listItem = document.createElement("li");
@@ -111,44 +118,37 @@ function abrirModalProject(project) {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('modal_card2');
 
-        const skillName = document.createElement('p')
-        skillName.classList.add('modal_card_title')
-        skillName.textContent = lang.name
+        const skillName = document.createElement('p');
+        skillName.classList.add('modal_card_title');
+        skillName.textContent = lang.name;
 
-        const skillImg = document.createElement('img')
-        skillImg.classList.add('modal_card_img')
+        const skillImg = document.createElement('img');
+        skillImg.classList.add('modal_card_img');
         skillImg.src = lang.image;
-        skillImg.alt = ` logo do ${skillName}`
-
-        nameProject.textContent = project.name
-        descriptionProject.textContent = project.description
-
-
+        skillImg.alt = `Logo do ${lang.name}`;
 
         cardDiv.appendChild(skillName);
         cardDiv.appendChild(skillImg);
         listItem.appendChild(cardDiv);
-        projectsContainer.appendChild(listItem);
 
-    }),
-        project.links.forEach(link => {
-            repoButton.href = link.repositorio
-            testButton.href = link.teste
-            linkedinButton.href = link.linkedin
-        }),
+        skillsList.appendChild(listItem); // Adiciona os itens na UL
+    });
 
-        Object.values(project.gallery[0]).forEach(image => {
+    project.links.forEach(link => {
+        repoButton.href = link.repositorio
+        testButton.href = link.teste
+        linkedinButton.href = link.linkedin
+    });
 
-            const galleryImage = document.createElement("img")
-            galleryImage.classList.add('gallery_img')
-            galleryImage.src = image
-            modalGallery.appendChild(galleryImage)
+    Object.values(project.gallery[0]).forEach(image => {
+        const galleryImage = document.createElement("img")
+        galleryImage.classList.add('gallery_img')
+        galleryImage.src = image
+        modalGallery.appendChild(galleryImage)
+    });
 
-
-
-        })
-    abrirModal()
-    closeProjectButton.addEventListener('click', fecharModal)
+    abrirModal();
+    closeProjectButton.addEventListener('click', fecharModal);
 }
 
 

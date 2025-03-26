@@ -184,6 +184,7 @@ button {
     display: block;
     z-index: -1;
 }
+
 .button:hover {
     color: var(--branco);
     font-weight: 700;
@@ -196,7 +197,7 @@ button {
     width: 100%;
 }
 
- 
+
 .button::after {
     right: 0;
 }
@@ -204,7 +205,7 @@ button {
 .button::before {
     left: 0;
 }
- 
+
 #particles-js {
     position: absolute;
     width: 100%;
@@ -258,7 +259,7 @@ button {
 .container_about {
     display: flex;
     flex-direction: column;
-    height:70vh;
+    height: 70vh;
     align-items: center;
     padding: 4em 8em;
 }
@@ -688,14 +689,14 @@ button {
     color: black;
 }
 
-.modal_skills_card {
+.modal_skills {
     display: flex;
     flex-direction: row;
-
     align-items: center;
     flex-wrap: wrap;
     gap: 1em;
     z-index: 100;
+    margin-top: 2em;
 }
 
 .modal_lang {
