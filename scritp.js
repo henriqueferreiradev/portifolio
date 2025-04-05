@@ -7,8 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSkills();
 });
 
+window.addEventListener('scroll', function () {
+    const botaoAoTopo = document.querySelector('.botao-retorno')
 
-
+    if (window.scrollY > 100) {
+        botaoAoTopo.classList.add('mostrar')
+    }
+    else {
+        botaoAoTopo.classList.remove('mostrar')
+    }
+})
 //dá loading nos projetos a partir do json
 async function loadProjetos(categoria) {
     const projectsCard = document.getElementById('card_area');
@@ -18,7 +26,7 @@ async function loadProjetos(categoria) {
     try {
         const resposta = await fetch('./projects.json');
         const projects = await resposta.json();
-  
+
 
 
         gerarBotoesCategoria(projects, categoria);
@@ -100,7 +108,7 @@ function abrirModalProject(project) {
     const testButton = document.querySelector(".teste")
     const linkedinButton = document.querySelector(".linkedin")
     const modalGallery = document.querySelector(".modal_gallery")
-    const skillsList = document.querySelector(".modal_skills"); 
+    const skillsList = document.querySelector(".modal_skills");
 
     if (!nameProject || !descriptionProject || !repoButton || !testButton || !linkedinButton || !modalGallery || !skillsList) {
         console.error("Algum elemento do modal não foi encontrado!");
@@ -213,7 +221,7 @@ async function loadSkills() {
     try {
         const resposta = await fetch('./language.json');
         const skills = await resposta.json();
-    
+
         skills.forEach(skill => {
             const listItem = document.createElement("li");
             listItem.classList.add('card');
@@ -348,11 +356,11 @@ function abrirCurriculo() {
 function baixarPDF() {
     const elemento = document.querySelector('.curriculo'); // Define o que será convertido
     const options = {
-        margin: [0,5,0,5],
+        margin: [0, 5, 0, 5],
         filename: 'Curriculo_Henrique_Monteiro.pdf',
-        image: {type:'jpeg', quality: 1},
-        html2canvas: {scale: 3, useCORS: true},
-        jsPDF: { unit:'mm', format:'a4', orientation: 'portrait'}
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 3, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }
     html2pdf()
 }

@@ -761,6 +761,32 @@ button {
 }
 
 .active {
+    
     background: var(--gradiente-verde-roxo);
     transition: .5s ease;
+}
+
+.botao-retorno {
+    background-color: var(--verde);
+    border-radius: 15px 15px 0 0;
+    border: none;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease, visibility .5s ease;
+}
+
+.botao-retorno.mostrar {
+    opacity: 1;
+    visibility: visible;
+     
+}
+
+.botao-retorno img {
+    width: 30px;
+    height: 30px;
+    padding: .5em;
 }

@@ -29,5 +29,66 @@
         "linkedin": "https://www.linkedin.com"
       }
     ]
+  },
+  {
+    "categoria": "Front-End",
+    "name": "Weather 0",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...",
+    "data": "21/09/2025",
+    "background": "./assets/projects/background_night.png",
+    "gallery": [
+      {
+        "01":"./assets/projects/background_night.png",
+        "02":"./assets/projects/background_night.png",
+        "04":"./assets/projects/background_night.png"
+      }
+    ],
+    "lang": [
+      {
+        "name": "CSS",
+        "image": "assets/languages/css.svg"
+      },
+      {
+        "name": "HTML",
+        "image": "assets/languages/html.svg"
+      }
+    ],
+    "links": [
+      {
+        "repositorio": "https://www.github.com.br",
+        "teste": "https://www.facebook.com",
+        "linkedin": "https://www.linkedin.com"
+      }
+    ]
+  } ,  {
+    "categoria": "Back-End",
+    "name": "Weather 0",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lectus nulla.\nMorbi tempor orci id purus tristique ultricies.\nInteger mollis scelerisque consectetur...",
+    "data": "21/09/2025",
+    "background": "./assets/projects/background_night.png",
+    "gallery": [
+      {
+        "01":"./assets/projects/background_night.png",
+        "02":"./assets/projects/background_night.png",
+        "04":"./assets/projects/background_night.png"
+      }
+    ],
+    "lang": [
+      {
+        "name": "CSS",
+        "image": "assets/languages/css.svg"
+      },
+      {
+        "name": "HTML",
+        "image": "assets/languages/html.svg"
+      }
+    ],
+    "links": [
+      {
+        "repositorio": "https://www.github.com.br",
+        "teste": "https://www.facebook.com",
+        "linkedin": "https://www.linkedin.com"
+      }
+    ]
   } 
 ]
